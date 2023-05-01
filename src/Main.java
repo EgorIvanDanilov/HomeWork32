@@ -1,5 +1,5 @@
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
@@ -22,34 +22,42 @@ public class Main {
     //Для каждого слова, независимо от регистра символов,
     // если оно присутствует в словаре, необходимо вывести на экран его определение.
     //Если слова в словаре нет, программа должна вывести "Не найдено", без кавычек.
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Dictionary");
         Scanner scanner = new Scanner(new File("res/dict.txt"));
         String n = scanner.nextLine();
-        System.out.println(" Our dictionary hat " + n + " words");
+        int total = Integer.parseInt(n);
+        System.out.println(" Our dictionary hat " + (total+1) + " words");
         printMenu();
         Scanner scanner1 = new Scanner(System.in);
-        Byte choice = scanner1.nextByte();
-
+        byte choice = scanner1.nextByte();
         switch (choice) {
-            case (1):
+            case (1) -> {
                 System.out.println("Input number of words:");
                 Byte m = inputBytePostNumber(); // ввод положительного числа
-                for (int i = 0; i <m ; i++) {
+                for (int i = 0; i < m; i++) {
                     System.out.println(scanner.nextLine());
                 }
-                break;
-            case (2):
+            }
+            case (2) -> {
+                System.out.println("Input a word");
+                String word = scanner1.next();
+                for (int i = 0; i < total; i++) {
+                    // Прошу прощения, не успел доделать
+                    String word1 = scanner.next();
+                    if (word1.equals(word)) {
+                        String definition = scanner.nextLine();
+                        System.out.println(definition);
+                    } else {
+                        System.out.println("Word '" + word + "' not found ");
+                    }
 
-                break;
-            default:
-                System.out.println("Input 1 or 2");
-                break;
+                }
+            }
+            default -> System.out.println("Input 1 or 2");
         }
-
-
-
-
+        scanner.close();
+        scanner1.close();
     }
     public static void printMenu() {
         System.out.println("What do you want?");

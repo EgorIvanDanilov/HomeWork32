@@ -43,7 +43,7 @@ public class Main {
                 System.out.println("Input a word");
                 String word = scanner1.next();
                 for (int i = 0; i < total; i++) {
-                    // Прошу прощения, не успел доделать
+                    // Доделать здесь
                     String word1 = scanner.next();
                     if (word1.equals(word)) {
                         String definition = scanner.nextLine();
